@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Fisch Item Hub</title>
+  <title>Fisch Zeus X Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <script src="https://js.stripe.com/v3/"></script>
   <style>
     :root {
-      --bg-color: #0f172a;
-      --card-color: rgba(255, 255, 255, 0.05);
-      --text-color: #f1f5f9;
-      --accent: #38bdf8;
-      --btn-bg: #3b82f6;
-      --btn-hover: #2563eb;
-      --glass-blur: blur(12px);
+      --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      --card-glow: rgba(0, 255, 255, 0.3);
+      --accent: #00ffff;
+      --accent-hover: #0ff;
+      --btn-bg: #1e90ff;
+      --btn-hover: #00bfff;
     }
 
     * {
@@ -22,66 +22,70 @@
     }
 
     body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      font-family: 'Segoe UI', sans-serif;
-      color: var(--text-color);
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-gradient);
+      color: #fff;
       padding-bottom: 60px;
+      min-height: 100vh;
     }
 
     header {
       text-align: center;
       padding: 40px 20px;
-      background: transparent;
     }
 
     header h1 {
-      font-size: 2.8em;
-      color: var(--accent);
+      font-size: 3.5em;
       font-weight: bold;
-      letter-spacing: 1px;
+      background: linear-gradient(to right, #0ff, #a0f, #f0f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 8px rgba(0, 255, 255, 0.4);
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
+      gap: 30px;
       max-width: 1200px;
       margin: auto;
       padding: 30px;
     }
 
     .item {
-      background: var(--card-color);
-      border-radius: 16px;
-      padding: 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 20px;
       text-align: center;
-      backdrop-filter: var(--glass-blur);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      transition: transform 0.3s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 0 15px var(--card-glow);
+      transition: 0.3s;
     }
 
     .item:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
+      border-color: var(--accent);
     }
 
     .item img {
       width: 100px;
       height: 100px;
       margin-bottom: 15px;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .item h3 {
-      font-size: 1.2em;
+      font-size: 1.5em;
       margin: 10px 0;
-      color: white;
+      color: #00ffff;
+      text-shadow: 1px 1px 4px #000;
     }
 
     .item p {
-      font-size: 1em;
+      font-size: 1.1em;
       margin-bottom: 15px;
-      color: #94a3b8;
+      color: #d1d5db;
+      text-shadow: 1px 1px 2px #000;
     }
 
     .buy-btn {
@@ -90,13 +94,16 @@
       border: none;
       padding: 12px 20px;
       font-size: 1em;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: background 0.2s ease;
+      box-shadow: 0 0 12px #0ff;
+      transition: background 0.3s ease, transform 0.2s;
     }
 
     .buy-btn:hover {
       background: var(--btn-hover);
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #0ff;
     }
 
     .footer {
@@ -116,11 +123,10 @@
 <body>
 
 <header>
-  <h1>Fisch Item Hub</h1>
+  <h1>Fisch Zeus X Shop</h1>
 </header>
 
 <div class="grid">
-  <!-- Coin Packages -->
   <div class="item">
     <img src="coin_5m.png" alt="5 Million Coins">
     <h3>5 Million Coins</h3>
@@ -134,20 +140,6 @@
     <button class="buy-btn" onclick="buyItem('price_10mil')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="coin_15m.png" alt="15 Million Coins">
-    <h3>15 Million Coins</h3>
-    <p>$12.99</p>
-    <button class="buy-btn" onclick="buyItem('price_15mil')">Buy with Stripe</button>
-  </div>
-  <div class="item">
-    <img src="coin_30m.png" alt="30 Million Coins">
-    <h3>30 Million Coins</h3>
-    <p>$19.99</p>
-    <button class="buy-btn" onclick="buyItem('price_30mil')">Buy with Stripe</button>
-  </div>
-
-  <!-- Creatures -->
-  <div class="item">
     <img src="nessie.png" alt="Nessie">
     <h3>Nessie</h3>
     <p>$9.99</p>
@@ -160,7 +152,7 @@
     <button class="buy-btn" onclick="buyItem('price_scylla')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="phantom_megalodon.png" alt="Phantom Megalodon">
+    <img src="phantom.png" alt="Phantom Megalodon">
     <h3>Phantom Megalodon</h3>
     <p>$13.99</p>
     <button class="buy-btn" onclick="buyItem('price_phantom')">Buy with Stripe</button>
