@@ -1,144 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fisch Premium Shop</title>
+  <meta charset="UTF-8">
+  <title>Fisch Item Hub</title>
   <script src="https://js.stripe.com/v3/"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f5f7;
-      --card: #ffffff;
-      --text: #1d1d1f;
-      --subtle: #6e6e73;
-      --accent: #007aff;
-      --radius: 18px;
+      --bg-color: #0f172a;
+      --card-color: rgba(255, 255, 255, 0.05);
+      --text-color: #f1f5f9;
+      --accent: #38bdf8;
+      --btn-bg: #3b82f6;
+      --btn-hover: #2563eb;
+      --glass-blur: blur(12px);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      background: var(--bg);
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      font-family: 'Segoe UI', sans-serif;
+      color: var(--text-color);
       padding-bottom: 60px;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px 20px;
+      padding: 40px 20px;
+      background: transparent;
     }
 
     header h1 {
-      font-size: 2.6rem;
-      font-weight: 600;
+      font-size: 2.8em;
+      color: var(--accent);
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .grid {
-      max-width: 1200px;
-      margin: 30px auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 25px;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
     }
 
     .item {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      background: var(--card-color);
+      border-radius: 16px;
+      padding: 25px;
       text-align: center;
-      transition: all 0.2s ease;
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      transition: transform 0.3s ease;
     }
 
     .item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-5px);
     }
 
     .item img {
       width: 72px;
       height: 72px;
-      margin-bottom: 18px;
-      border-radius: 14px;
+      margin-bottom: 15px;
+      border-radius: 10px;
     }
 
     .item h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 1.2em;
+      margin: 10px 0;
+      color: white;
     }
 
     .item p {
-      color: var(--subtle);
-      margin-bottom: 18px;
+      font-size: 1em;
+      margin-bottom: 15px;
+      color: #94a3b8;
     }
 
     .buy-btn {
-      background-color: var(--accent);
+      background: var(--btn-bg);
       color: white;
-      padding: 10px 20px;
-      font-size: 1rem;
       border: none;
-      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 10px;
       cursor: pointer;
       transition: background 0.2s ease;
     }
 
     .buy-btn:hover {
-      background-color: #0051c9;
+      background: var(--btn-hover);
     }
 
     .footer {
       text-align: center;
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: var(--subtle);
+      color: #94a3b8;
+      margin-top: 40px;
+      font-size: 0.9em;
     }
 
     .footer a {
       color: var(--accent);
-      margin: 0 8px;
       text-decoration: none;
+      margin: 0 8px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Fisch Premium Shop</h1>
+  <h1>Fisch Item Hub</h1>
 </header>
 
 <div class="grid">
-  <!-- Coin Packages -->
+  <!-- Fisch Items -->
   <div class="item">
-    <img src="coin_5m.png" alt="5 Million Coins">
+    <img src="coin.png" alt="5 Million Coins">
     <h3>5 Million Coins</h3>
-    <p>$5.00</p>
-    <button class="buy-btn" onclick="buyItem('price_5mil')">Buy</button>
+    <p>$4.99</p>
+    <button class="buy-btn" onclick="buyItem('price_5mil')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="coin_10m.png" alt="10 Million Coins">
+    <img src="coin.png" alt="10 Million Coins">
     <h3>10 Million Coins</h3>
-    <p>$10.00</p>
-    <button class="buy-btn" onclick="buyItem('price_10mil')">Buy</button>
+    <p>$8.99</p>
+    <button class="buy-btn" onclick="buyItem('price_10mil')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="coin_15m.png" alt="15 Million Coins">
+    <img src="coin.png" alt="15 Million Coins">
     <h3>15 Million Coins</h3>
     <p>$12.99</p>
-    <button class="buy-btn" onclick="buyItem('price_15mil')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_15mil')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="coin_30m.png" alt="30 Million Coins">
+    <img src="coin.png" alt="30 Million Coins">
     <h3>30 Million Coins</h3>
     <p>$19.99</p>
-    <button class="buy-btn" onclick="buyItem('price_30mil')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_30mil')">Buy with Stripe</button>
   </div>
 
   <!-- Creatures -->
@@ -146,33 +151,33 @@
     <img src="nessie.png" alt="Nessie">
     <h3>Nessie</h3>
     <p>$9.99</p>
-    <button class="buy-btn" onclick="buyItem('price_nessie')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_nessie')">Buy with Stripe</button>
   </div>
   <div class="item">
     <img src="scylla.png" alt="Scylla">
     <h3>Scylla</h3>
     <p>$11.99</p>
-    <button class="buy-btn" onclick="buyItem('price_scylla')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_scylla')">Buy with Stripe</button>
   </div>
   <div class="item">
-    <img src="phantom_megalodon.png" alt="Phantom Megalodon">
+    <img src="phantom.png" alt="Phantom Megalodon">
     <h3>Phantom Megalodon</h3>
     <p>$13.99</p>
-    <button class="buy-btn" onclick="buyItem('price_phantom')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_phantom')">Buy with Stripe</button>
   </div>
   <div class="item">
     <img src="moby.png" alt="Moby">
     <h3>Moby</h3>
     <p>$14.99</p>
-    <button class="buy-btn" onclick="buyItem('price_moby')">Buy</button>
+    <button class="buy-btn" onclick="buyItem('price_moby')">Buy with Stripe</button>
   </div>
 </div>
 
 <div class="footer">
   <p>
     <a href="#">Discord</a> | 
-    <a href="#">Terms</a> | 
-    <a href="#">Support</a>
+    <a href="#">Contact</a> | 
+    <a href="#">Terms</a>
   </p>
 </div>
 
@@ -188,9 +193,6 @@
     });
   }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
